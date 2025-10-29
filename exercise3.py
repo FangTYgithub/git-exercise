@@ -32,7 +32,8 @@ class Rectangle:
         #         and reuse that here.
         ll_px = point.x - self._lower_left.x
         ll_py = point.y - self._lower_left.y
-        return self.is_in_interval(ll_px, 0.0, self._dx, tolerance) and self.is_in_interval(ll_py, 0.0, self._dy, tolerance)
+        return ll_px >= 0 and ll_px <= self._dx \
+            and ll_py >= 0 and ll_py <= self._dy
 
     def _is_idx_on_upper_edge(self, i: int) -> bool:
         return i in [2, 3]
