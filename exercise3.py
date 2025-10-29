@@ -32,8 +32,7 @@ class Rectangle:
         #         and reuse that here.
         ll_px = point.x - self._lower_left.x
         ll_py = point.y - self._lower_left.y
-        return ll_px >= 0 and ll_px <= self._dx \
-            and ll_py >= 0 and ll_py <= self._dy
+        return self.is_in_interval(ll_px, 0.0, self._dx, tolerance) and self.is_in_interval(ll_py, 0.0, self._dy, tolerance)
 
     def _is_idx_on_upper_edge(self, i: int) -> bool:
         return i in [2, 3]
@@ -42,6 +41,9 @@ class Rectangle:
         return i in [1, 3]
 
     # def is_in_interval(...) -> bool: # Task A
+    @staticmethod
+    def is_in_interval(value: float, lower: float, upper: float, tolerance: float = 0.0) -> bool: # Task A
+        return value >= (lower - tolerance) and value <= (upper + tolerance)
 
 
 def test_rectangle_contains_exact() -> None:
