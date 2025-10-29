@@ -18,6 +18,12 @@ class Point2D:
     #    self._coordinates += other
     #    return self
 
+    
+      
+    def __iadd__(self, other: Vector) -> Point2D:
+        self._coordinates = self._corrdinates + other
+        return self
+    
     def __isub__(self, other: Vector) -> Point2D:
         self._coordinates = self._coordinates - other
         return self
